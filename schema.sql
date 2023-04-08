@@ -8,3 +8,5 @@ CREATE TABLE animals(
     neutered BOOLEAN, 
     weight_kg FLOAT(8)
 );
+
+ALTER TABLE animals ADD species varchar(100);
