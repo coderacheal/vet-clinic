@@ -21,5 +21,24 @@ ALTER TABLE animals DROP COLUMN species;
 ALTER TABLE animals ADD species_id INT REFERENCES species (id);
 ALTER TABLE animals ADD owner_id INT REFERENCES owners (id);
 
+-- EXercise 4 
 
+CREATE TABLE vets (
+    id SERIAL PRIMARY KEY, 
+    name VARCHAR(255), 
+    age INT, 
+    date_of_graduation DATE);
+
+CREATE TABLE specializations (
+    id SERIAL PRIMARY KEY, 
+    species_id INT, 
+    vet_id INT,
+    FOREIGN KEY (species_id)  REFERENCES species (id),  FOREIGN KEY (vet_id) REFERENCES vets (id));
+
+CREATE TABLE visits (
+    id SERIAL PRIMARY KEY, 
+    animals_id INT,
+    vet_id INT,
+    date_of_visit DATE,
+    FOREIGN KEY (animals_id) REFERENCES animals (id), FOREIGN KEY (vet_id) REFERENCES vets (id));
 
